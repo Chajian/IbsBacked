@@ -8,17 +8,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-    String Id;
+    int id;
     String username;
     String password;
 
-
-    public String getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {

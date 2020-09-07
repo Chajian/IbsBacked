@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ibs.backed.dao.RbacDao">
+    <resultMap id="User" type="com.ibs.backed.data.User">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+    <resultMap id="Role" type="com.ibs.backed.data.Role">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <resultMap id="Permission" type="com.ibs.backed.data.Permission">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+    </resultMap>
+
+    <select id="selectUserByid" resultType="com.ibs.backed.data.User">
+        select * from ibs_user where id = #{id}
+    </select>
+
+    <select id="selectUserByname" resultType="com.ibs.backed.data.User">
+        select id,username,password from ibs_user where username = #{name}
+    </select>
+
+    <select id="selectRoleByid" resultType="com.ibs.backed.data.Role">
+        select * from ibs_role where id = #{id}
+    </select>
+
+    <select id="selectPermissionByid" resultType="com.ibs.backed.data.Permission">
+        select * from ibs_permission where id = #{id}
+    </select>
+
+
+    <select id="selectAllUsers" resultType="com.ibs.backed.data.User">
+        select * from ibs_user
+    </select>
+
+    <select id="selectUserRole" resultType="java.lang.Integer">
+        select role_id from ibs_user_role where user_id = #{id}
+    </select>
+
+    <select id="selectRolePermission" resultType="java.lang.Integer">
+        select permission_id from ibs_role_permission where role_id = #{id}
+    </select>
+
+    <update id="updateUser">
+        update ibs_user set username = #{username},password = #{password} where id = #{id}
+    </update>
+
+    <update id="updateRole">
+        update ibs_role set name = #{name},description = #{description} where id = #{id}
+    </update>
+
+    <update id="updatePermission">
+        update ibs_permission set name = #{name},description = #{description} where id = #{id}
+    </update>
+
+    <delete id="deleteUserByid">
+        delete ibs_user where id = #{id}
+    </delete>
+
+    <delete id="deleteRoleByid">
+        delete ibs_role where id = #{id}
+    </delete>
+
+    <delete id="deletePermission">
+        delete ibs_permission where id #{id}
+    </delete>
+
+    <insert id="regUser">
+        insert into ibs_user (username,password) value(#{username},#{password})
+    </insert>
+
+    <insert id="regRole">
+        insert into ibs_role values(#{id},#{name},#{description})
+    </insert>
+
+    <insert id="regPermission">
+        insert into ibs_permission values(#{id},#{name},#{description})
+    </insert>
+</mapper>

@@ -16,7 +16,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/ibs/backed/dao/UserDao.xml"/>
+        <mapper resource="com/ibs/backed/dao/RbacDao.xml"/>
     </mappers>
 
 </configuration>

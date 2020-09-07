@@ -23,14 +23,15 @@ public class MyBatis {
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             SqlSessionFactory factory = builder.build(inputStream);
             sqlSession = factory.openSession();
+//            sqlSession.getConfiguration().addMapper(RbacDao.class);
         }
         catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    public UserDao getUserDao(){
-        UserDao personDao = sqlSession.getMapper(UserDao.class);
+    public RbacDao getRbacDao(){
+        RbacDao personDao = sqlSession.getMapper(RbacDao.class);
         return personDao;
     }
 

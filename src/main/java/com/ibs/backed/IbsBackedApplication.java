@@ -14,7 +14,6 @@ import org.springframework.context.annotation.ImportResource;
 public class IbsBackedApplication {
 
     public static void main(String[] args) {
-        MyBatis.getMyBatis();
         SpringApplication.run(IbsBackedApplication.class, args);
     }
 
